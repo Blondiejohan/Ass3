@@ -37,7 +37,7 @@ public class Start extends City {
         world.putWalls();
         world.distributeThings(20);
         Robot rob = new Robot(world, 5, 5, Direction.NORTH);
-
+//ssssss
 
     }
 
