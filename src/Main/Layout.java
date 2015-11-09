@@ -9,75 +9,78 @@ import becker.robots.*;
 
 public class Layout extends FramedCity {
 
-    JButton startStop;
-    JPanel panel;
-    CityView view;
+	JButton startStop;
+	JPanel panel;
+	private CityView view;
 
-    public Layout() {
-        super();
-        addPanel();
-    }
+	public Layout() {
+		super();
+		addPanel();
+	}
 
-    public void addCity() {
+	public void addCity() {
 
-        City.showFrame(false);
+		City.showFrame(false);
 
-        presentCity = new PresentCity();
+		presentCity = new PresentCity();
 
-        uiStuff = new RobotUIComponents(presentCity, 0, 0, size, size);
-        
-        this.view = uiStuff.getCityView();
+		uiStuff = new RobotUIComponents(presentCity, 0, 0, size, size);
 
-        panel.add(view);
+		CityView view = uiStuff.getCityView();
 
-        frame.pack();
+		this.view = uiStuff.getCityView();
 
-    }
+		panel.add(view);
 
-//    public void addStartStop() {
-//        startStop = uiStuff.getStartStopButton();
-//
-//        panel.add(startStop);
-//
-//        frame.pack();
-//    }        
+		frame.pack();
 
-    public void addPanel() {
-         panel = new JPanel(new FlowLayout());
-         addCity();
-        panel.add(this.view);
-//        panel.add(startStop);
+	}
 
-         
-//         startStop = uiStuff.getStartStopButton();
-                panel = new JPanel(new BorderLayout());
+	//    public void addStartStop() {
+		//        startStop = uiStuff.getStartStopButton();
+	//
+	//        panel.add(startStop);
+	//
+	//        frame.pack();
+	//    }        
 
-         panel.add(view, BorderLayout.NORTH);
-
-//         panel.add(startStop, BorderLayout.SOUTH);
-
-         panel = new JPanel(new GridLayout(2, 1));
-
-         panel.add(view);
-//         panel.add(startStop);
-
-        panel = new JPanel(null);
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-
-        frame.setContentPane(panel);
-
-        frame.pack();
-
-    }
+	public void addPanel() {
+		panel = new JPanel(new FlowLayout());
+		addCity();
+		panel.add(view);
+		//        panel.add(startStop);
 
 
-        
-//    public static void main(String[] args) {
-//
-//        Layout framedCity = new Layout();
-//
-//        framedCity.addCity();
-//        framedCity.addStartStop();
-    }
+		//         startStop = uiStuff.getStartStopButton();
+		panel = new JPanel(new BorderLayout());
 
-//}
+		panel.add(view, BorderLayout.NORTH);
+
+		//         panel.add(startStop, BorderLayout.SOUTH);
+
+		panel = new JPanel(new GridLayout(2, 1));
+
+		panel.add(view);
+		//         panel.add(startStop);
+
+		panel = new JPanel(null);
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+		frame.setContentPane(panel);
+
+		frame.pack();
+
+	}
+
+
+
+	    public static void main(String[] args) {
+	
+	        Layout framedCity = new Layout();
+	
+	        framedCity.addCity();
+	        framedCity.presentCity.placePresent();
+//	        framedCity.addStartStop();
+}
+
+}

@@ -10,8 +10,6 @@ import java.awt.Toolkit;
 
 import becker.robots.icons.Icon;
 
-
-
 public class PresentIcon extends Icon{
 
 
