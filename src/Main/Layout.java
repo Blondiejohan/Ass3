@@ -28,14 +28,15 @@ public class Layout extends FramedCity {
 
 		CityView view = uiStuff.getCityView();
 
-		this.view = uiStuff.getCityView();
+		this.view = view;
 
-		panel.add(view);
+		panel.add(this.view);
 
 		frame.pack();
 
 	}
-
+	
+	
 	//    public void addStartStop() {
 		//        startStop = uiStuff.getStartStopButton();
 	//
