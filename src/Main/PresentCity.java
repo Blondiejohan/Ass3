@@ -36,13 +36,13 @@ public class PresentCity extends City {
 
 
 	}
-//	public static void main(String[] args) {
-//
-//		PresentCity city = new PresentCity();
-//		city.walls();
-//		city.placePresent();
-//
-//	}
+	public static void main(String[] args) {
+
+		PresentCity city = new PresentCity();
+		city.walls();
+		city.placePresent();
+
+	}
 
 }
 

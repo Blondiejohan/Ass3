@@ -12,6 +12,7 @@ public class Layout extends FramedCity {
 	JButton startStop;
 	JPanel panel;
 	private CityView view;
+	PlayerRobot rob, evilRob;
 
 	public Layout() {
 		super();
@@ -24,8 +25,9 @@ public class Layout extends FramedCity {
 
 		presentCity = new PresentCity();
 		
-		PlayerRobot rob = new PlayerRobot(presentCity, 5, 5, Direction.NORTH);
-		PlayerRobot evilRob = new PlayerRobot(presentCity, 3, 3, Direction.SOUTH);
+		rob = new PlayerRobot(presentCity, 7, 7, Direction.NORTH, 1.0);
+		evilRob = new PlayerRobot(presentCity, 3, 3, Direction.SOUTH, 0.3);
+		Present present = new Present(presentCity, 5, 5);
 
 		uiStuff = new RobotUIComponents(presentCity, 0, 0, size, size);
 

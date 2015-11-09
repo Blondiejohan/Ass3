@@ -55,7 +55,11 @@ public class Menu extends Layout{
 		JRadioButtonMenuItem medium = new JRadioButtonMenuItem("Medium");
 		JRadioButtonMenuItem hard = new JRadioButtonMenuItem("Hard");
 
-		easy.setSelected(true); 
+		easy.setSelected(true);
+		
+		easy.addActionListener(e -> changeRobotSpeed(0.33));
+		medium.addActionListener(e -> changeRobotSpeed(0.66));
+		hard.addActionListener(e -> changeRobotSpeed(1.0));
 
 		ButtonGroup settingsGroup = new ButtonGroup();
 		settingsGroup.add(easy);
@@ -68,6 +72,10 @@ public class Menu extends Layout{
 		settings.add(hard);
 
 		return settings;
+	}
+
+	private void changeRobotSpeed(double d) {
+		evilRob.setSpeed(d);
 	}
 
 	public void addMenu() {
