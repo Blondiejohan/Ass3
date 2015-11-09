@@ -6,7 +6,7 @@ import becker.robots.RobotUIComponents;
 
 public class Main extends Menu {
 
-	int size=10;
+	//int size=10;
 	
 public Main(){
 	super();

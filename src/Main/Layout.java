@@ -68,7 +68,6 @@ public class Layout extends FramedCity {
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
 		frame.setContentPane(panel);
-
 		frame.pack();
 
 	}

@@ -33,7 +33,6 @@ public class Menu extends Layout{
 		frame.remove(panel);
 
 		addMenu();
-		addPanel();
 	}
 
 
