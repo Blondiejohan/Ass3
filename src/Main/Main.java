@@ -1,11 +1,7 @@
 package Main;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 
-import static Util.Random.*;
-import becker.robots.*;
 
 public class Main extends MenuThing {
 
