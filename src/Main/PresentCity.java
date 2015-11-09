@@ -9,13 +9,14 @@ import becker.robots.Wall;
 public class PresentCity extends City {
 
 
-	static int size=20;
-	int present=1;
+	static int size=10;
+
 
 	public PresentCity(){
 		super(size,size);
-		walls();
 		placePresent();
+		walls();
+
 	}
 
 	void walls() {
@@ -30,13 +31,18 @@ public class PresentCity extends City {
 	}
 
 	void placePresent() {
+		showThingCounts(true);
+		new Present(this, 5, 5);
 
-		PresentIcon ico = new PresentIcon(3);
-		
-		new Present(this, 10, 10, Direction.NORTH, true, ico);
-		
+
 	}
-
+//	public static void main(String[] args) {
+//
+//		PresentCity city = new PresentCity();
+//		city.walls();
+//		city.placePresent();
+//
+//	}
 
 }
 

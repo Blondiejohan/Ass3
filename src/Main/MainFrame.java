@@ -4,7 +4,12 @@ import javax.swing.JFrame;
 
 public class MainFrame extends JFrame{
 
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4308129398339472271L;
+
 
 	public MainFrame(String name){
 		super(name);
@@ -13,11 +18,11 @@ public class MainFrame extends JFrame{
 	}
 	
 	
-	public static void main(String[] args) {
-		MainFrame main = new MainFrame("");
-		main.setSize(1028,768);
-		main.setResizable(false);
-
-	}
+//	public static void main(String[] args) {
+//		MainFrame main = new MainFrame("Presentopolis");
+//		main.setSize(1028,768);
+//		
+//
+//	}
 
 }

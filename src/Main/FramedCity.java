@@ -13,7 +13,7 @@ public class FramedCity {
     
     public FramedCity() {
     	frame = new MainFrame("Presenttopolis");
-        size = 20;
+        size = 10;
         
     }
 
@@ -33,9 +33,9 @@ public class FramedCity {
 
     }
     
-	public static void main(String[] args) {
-		FramedCity city = new FramedCity();
-		city.addCity();
-	}
+//	public static void main(String[] args) {
+//		FramedCity city = new FramedCity();
+//		city.addCity();
+//	}
 
 }
