@@ -10,7 +10,6 @@ public class PlayerRobot extends Robot {
 	public PlayerRobot(City arg0, int arg1, int arg2, Direction arg3, Double speed) {
 		super(arg0, arg1, arg2, arg3);
 		this.speed = speed;
-		// TODO Auto-generated constructor stub
 	}
 
 	public void turnRight() {

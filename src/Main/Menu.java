@@ -1,8 +1,5 @@
 package Main;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -11,7 +8,7 @@ import javax.swing.JRadioButtonMenuItem;
 
 public class Menu extends Layout{
 	private boolean paused = false;
-	
+
 	public Menu() {
 		super();
 	}
@@ -35,7 +32,6 @@ public class Menu extends Layout{
 		addMenu();
 	}
 
-
 	public JMenu makeActionsMenu() {
 		JMenuItem pause = new JMenuItem("Pause");
 		JMenuItem restart = new JMenuItem("Restart");
@@ -56,7 +52,7 @@ public class Menu extends Layout{
 		JRadioButtonMenuItem hard = new JRadioButtonMenuItem("Hard");
 
 		easy.setSelected(true);
-		
+
 		easy.addActionListener(e -> changeRobotSpeed(0.33));
 		medium.addActionListener(e -> changeRobotSpeed(0.66));
 		hard.addActionListener(e -> changeRobotSpeed(1.0));
@@ -91,16 +87,4 @@ public class Menu extends Layout{
 		frame.setJMenuBar(menuBar);
 		frame.pack();
 	}
-
-
-
-	//	public static void main(String[] args) {
-	//
-	//		MenuThing framedCity = new MenuThing();
-	//
-	//        framedCity.addCity();
-	//        framedCity.addStartStop();
-	//        framedCity.addMenu();
-	//
-	//    }
 }

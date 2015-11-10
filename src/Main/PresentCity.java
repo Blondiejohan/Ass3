@@ -8,14 +8,13 @@ import becker.robots.Wall;
 
 public class PresentCity extends City {
 
-
-	static int size=10;
+	private static java.util.Random random = new java.util.Random();
+	public int size;
 
 
 	public PresentCity(){
-		super(size,size);
-		placePresent();
-		walls();
+		super();
+		this.size = 20;
 
 	}
 
@@ -31,18 +30,18 @@ public class PresentCity extends City {
 	}
 
 	void placePresent() {
-		showThingCounts(true);
-		new Present(this, 5, 5);
+		
+		int vertical = randomInt(size);
+		int horizontal = randomInt(size);
+		
+		new Present(this, vertical, horizontal, Direction.NORTH,true,new PresentIcon());
 
 
 	}
-	public static void main(String[] args) {
-
-		PresentCity city = new PresentCity();
-		city.walls();
-		city.placePresent();
-
-	}
+	
+	public static int randomInt(int n) {
+        return random.nextInt(n);
+    }
 
 }
 
