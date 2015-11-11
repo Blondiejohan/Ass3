@@ -1,13 +1,6 @@
 package Main;
 
-import java.awt.ActiveEvent;
-import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.Action;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 import becker.robots.City;
 import becker.robots.Direction;
 import becker.robots.Robot;
@@ -41,8 +34,8 @@ public class PlayerRobot extends Robot implements Runnable {
 			if (choice == JOptionPane.YES_OPTION){
 				m.restart();
 			} else{
-                System.exit(0);
-		}
+				System.exit(0);
+			}
 		}
 	}
 

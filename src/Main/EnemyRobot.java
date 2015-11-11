@@ -2,7 +2,6 @@ package Main;
 
 import becker.robots.City;
 import java.awt.Color;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import becker.robots.Direction;
 import becker.robots.IPredicate;
@@ -56,13 +55,7 @@ public class EnemyRobot extends PlayerRobot implements IPredicate{
 		move();
 	}
 	
-//	public void pickThing(){
-//		if(canPickThing() && (this.equals(aRobot) || this.equals(aThing))){
-//			super.pickThing();
-//		} else {
-//			move();
-//		}
-//	}
+
 	
 
 	public static int randomInt(int n) {

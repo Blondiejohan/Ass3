@@ -3,9 +3,6 @@ package Main;
 import javax.swing.*;
 
 import java.awt.*;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.util.EventListener;
 
 import becker.robots.*;
 
@@ -76,13 +73,6 @@ public class Layout extends FramedCity{
 		layout.setAutoCreateGaps(true);
 		layout.setAutoCreateContainerGaps(true);
 
-
-		//		buttonPanel.add(up);
-		//		buttonPanel.add(down);
-		//		buttonPanel.add(left);
-		//		buttonPanel.add(right);
-		//		buttonPanel.add(pick);
-
 		layout.setHorizontalGroup(
 				layout.createSequentialGroup()
 				.addComponent(left)
@@ -118,7 +108,5 @@ public class Layout extends FramedCity{
 
 		startStop.doClick();
 
-	}
-
-	
+	}	
 }

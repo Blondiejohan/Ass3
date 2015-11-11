@@ -6,12 +6,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 
-import becker.robots.Direction;
-
 public class Menu extends Layout{
-	private boolean paused = false;
-	Main m;
-
 	public Menu() {
 		super();
 	}
@@ -26,11 +21,7 @@ public class Menu extends Layout{
 		frame.repaint();
 
 		addPanel();
-	//	addButtons();
-	//	addCity();
 		addMenu();
-		
-	//	startStop.doClick();
 	}
 	
 	public void restart(double speed){
