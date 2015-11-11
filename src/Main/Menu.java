@@ -10,6 +10,7 @@ import becker.robots.Direction;
 
 public class Menu extends Layout{
 	private boolean paused = false;
+	Main m;
 
 	public Menu() {
 		super();
@@ -20,12 +21,31 @@ public class Menu extends Layout{
 	}
 
 	public void restart(){
+		startStop.doClick();
 		frame.remove(panel);
-		//frame.repaint();
+		frame.repaint();
 
 		addPanel();
-		addCity();
+	//	addButtons();
+	//	addCity();
 		addMenu();
+		
+	//	startStop.doClick();
+	}
+	
+	public void restart(double speed){
+		startStop.doClick();
+		frame.remove(panel);
+		frame.repaint();
+
+		addPanel();
+	//	addButtons();
+	//	addCity();
+		addMenu();
+		
+		evilRob.setSpeed(speed);
+		
+	//	startStop.doClick();
 	}
 
 	public JMenu makeActionsMenu() {
@@ -67,8 +87,9 @@ public class Menu extends Layout{
 	}
 
 	private void changeRobotSpeed(double d) {
-		restart();
-		evilRob.setSpeed(d);
+		
+		restart(d);
+
 	}
 
 	public void addMenu() {

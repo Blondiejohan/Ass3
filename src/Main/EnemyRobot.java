@@ -27,7 +27,7 @@ public class EnemyRobot extends PlayerRobot implements IPredicate{
 	}
 
 	public void pickThing() {
-		if (canPickThing())
+		if (canPickThing() == true)
 			super.pickThing();
 //		if (this.countThingsInBackpack() == 1){
 //			JFrame frame = null;
