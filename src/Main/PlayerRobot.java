@@ -1,5 +1,10 @@
 package Main;
 
+import java.awt.ActiveEvent;
+import java.awt.event.ActionEvent;
+import java.beans.PropertyChangeListener;
+
+import javax.swing.Action;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -7,36 +12,45 @@ import becker.robots.City;
 import becker.robots.Direction;
 import becker.robots.Robot;
 
-public class PlayerRobot extends Robot implements Runnable{
-	Double speed;
+public class PlayerRobot extends Robot implements Runnable {
+	double speed;
+	Main m;
 
-	public PlayerRobot(City arg0, int arg1, int arg2, Direction arg3, Double speed) {
+	public PlayerRobot(City arg0, int arg1, int arg2, Direction arg3, double speed, Main m) {
 		super(arg0, arg1, arg2, arg3);
 		this.speed = speed;
+		this.m = m;
 		setSpeed(speed);
 	}
 
+	public void move(){
+		if(!frontIsClear()){
+			turnLeft();
+			move();
+		} else {
+			super.move();
+		}
+	}
 
 	public void pickThing() {
 		if (canPickThing())
 			super.pickThing();
 		if (this.countThingsInBackpack() == 1){
-			JFrame frame = null;
-			JOptionPane.showMessageDialog(frame, "You win! Congratulations");
+			m.startStop.doClick();
+			int choice = JOptionPane.showConfirmDialog(null, "You win! Congratulations", "Restart game?", JOptionPane.YES_NO_OPTION);
+			if (choice == JOptionPane.YES_OPTION){
+				m = new Main();
+				m.restart();
+			} else{
+                System.exit(0);
+		}
 		}
 	}
-
-
-
 
 	public void go(int nrSteps) {
 		for (int i = 0; i < nrSteps; i++) {
 			move();
 		}
-	}
-	
-	public void freeze(){
-		//TODO
 	}
 
 	public void moveTo(String s){
@@ -107,5 +121,7 @@ public class PlayerRobot extends Robot implements Runnable{
 	public void run() {
 		go(0);
 	}
+
+
 
 }

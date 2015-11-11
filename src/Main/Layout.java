@@ -3,10 +3,13 @@ package Main;
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.util.EventListener;
 
 import becker.robots.*;
 
-public class Layout extends FramedCity {
+public class Layout extends FramedCity{
 
 	JButton startStop;
 	JPanel panel;
@@ -34,13 +37,7 @@ public class Layout extends FramedCity {
 		RobotUIComponents uiStuff = new RobotUIComponents(presentCity, 0, 0, size, size);
 		this.uiStuff = uiStuff;
 
-		rob = new PlayerRobot(presentCity, 7, 7, Direction.NORTH, 3.0);
-		evilRob = new EnemyRobot(presentCity, 3, 3, Direction.SOUTH,1.0);
-		robThread = new Thread(rob);
-		evilThread = new Thread(evilRob);
-
-		robThread.start();
-		evilThread.start();
+		
 		CityView view = uiStuff.getCityView();
 		view = uiStuff.getCityView();
 		this.view = view;
@@ -122,4 +119,6 @@ public class Layout extends FramedCity {
 		startStop.doClick();
 
 	}
+
+	
 }

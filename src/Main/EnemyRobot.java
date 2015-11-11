@@ -5,14 +5,14 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import becker.robots.Direction;
+import becker.robots.IPredicate;
+import becker.robots.Sim;
 
-public class EnemyRobot extends PlayerRobot{
+public class EnemyRobot extends PlayerRobot implements IPredicate{
 	private static java.util.Random random = new java.util.Random();
-	Double speed;
 
-	public EnemyRobot(City arg0, int arg1, int arg2, Direction arg3, double s) {
-		super(arg0, arg1, arg2, arg3,s);
-		this.speed = s;
+	public EnemyRobot(City arg0, int arg1, int arg2, Direction arg3, double s, Main m) {
+		super(arg0, arg1, arg2, arg3,s,m);
 		setSpeed(s);
 		
 		Color black = new Color(1);
@@ -44,14 +44,26 @@ public class EnemyRobot extends PlayerRobot{
 			}
 		}
 		setSpeed(speed);
-		if (this.countThingsInBackpack() == 1){
-			JFrame frame = null;
-			JOptionPane.showMessageDialog(frame, "Evil prevails");
+		if (this.countThingsInBackpack() == 1 || countThingsInBackpack(IPredicate.aRobot) > 0 ){
+			int choice = JOptionPane.showConfirmDialog(null, "Evil prevails /n Restart game?", "Game over", JOptionPane.YES_NO_OPTION);
+			if (choice == JOptionPane.YES_OPTION)
+				m.restart();
+            else
+                System.exit(0);
 			
 		}
 		pickThing();
 		move();
 	}
+	
+//	public void pickThing(){
+//		if(canPickThing() && (this.equals(aRobot) || this.equals(aThing))){
+//			super.pickThing();
+//		} else {
+//			move();
+//		}
+//	}
+	
 
 	public static int randomInt(int n) {
 		return random.nextInt(n);
@@ -61,5 +73,10 @@ public class EnemyRobot extends PlayerRobot{
 	public void run() {
 		go(1000);
 		System.out.println("Evil has the runs");
+	}
+
+	@Override
+	public boolean isOK(Sim s) {
+		return s instanceof PlayerRobot;
 	}
 }

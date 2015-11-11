@@ -20,12 +20,11 @@ public class Menu extends Layout{
 	}
 
 	public void restart(){
-
 		frame.remove(panel);
-		frame.repaint();
+		//frame.repaint();
 
 		addPanel();
-
+		addCity();
 		addMenu();
 	}
 
@@ -69,10 +68,7 @@ public class Menu extends Layout{
 
 	private void changeRobotSpeed(double d) {
 		restart();
-		evilThread.interrupt();
-		evilRob = new EnemyRobot(presentCity, size, size, Direction.SOUTH, d);
-		evilThread = new Thread(evilRob);
-		evilThread.start();
+		evilRob.setSpeed(d);
 	}
 
 	public void addMenu() {
