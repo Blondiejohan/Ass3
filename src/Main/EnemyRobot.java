@@ -12,6 +12,8 @@ public class EnemyRobot extends PlayerRobot{
 
 	public EnemyRobot(City arg0, int arg1, int arg2, Direction arg3, double s) {
 		super(arg0, arg1, arg2, arg3,s);
+		this.speed = s;
+		
 		Color black = new Color(1);
 		this.setColor(black);
 

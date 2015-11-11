@@ -35,8 +35,8 @@ public class Layout extends FramedCity {
 		view = uiStuff.getCityView();
 		this.view = view;
 		
-		rob = new PlayerRobot(presentCity, 7, 7, Direction.NORTH, 1.0);
-		evilRob = new EnemyRobot(presentCity, 3, 3, Direction.SOUTH,0.3);
+		rob = new PlayerRobot(presentCity, 7, 7, Direction.NORTH, 3.0);
+		evilRob = new EnemyRobot(presentCity, 3, 3, Direction.SOUTH,1.0);
 
 		Thread robThread = new Thread(rob);
 		Thread evilThread = new Thread(evilRob);

@@ -10,6 +10,7 @@ public class PlayerRobot extends Robot implements Runnable{
 	public PlayerRobot(City arg0, int arg1, int arg2, Direction arg3, Double speed) {
 		super(arg0, arg1, arg2, arg3);
 		this.speed = speed;
+		setSpeed(speed);
 	}
 
 	public void turnRight() {
