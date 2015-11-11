@@ -8,9 +8,11 @@ public Main(){
 }
 
 
+
 	public static void main(String[] args) {
 		Main window = new Main();
 		window.addMenu();
+		
 		
 	}
 }

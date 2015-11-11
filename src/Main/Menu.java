@@ -33,7 +33,7 @@ public class Menu extends Layout{
 		frame.repaint();
 		frame.remove(panel);
 		
-		addPanel();
+		 addPanel();
 		 addButtons();
 	     addCity();
 	     addMenu();
@@ -83,7 +83,6 @@ public class Menu extends Layout{
 		evilRob = new EnemyRobot(presentCity, size, size, Direction.SOUTH, d);
 		evilThread = new Thread(evilRob);
 		evilThread.start();
-		//evilThread.start();
 	}
 
 	public void addMenu() {

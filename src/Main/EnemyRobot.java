@@ -1,10 +1,10 @@
 package Main;
 
 import becker.robots.City;
-
 import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import becker.robots.Direction;
-import becker.robots.Robot;
 
 public class EnemyRobot extends PlayerRobot{
 	private static java.util.Random random = new java.util.Random();
@@ -22,18 +22,21 @@ public class EnemyRobot extends PlayerRobot{
 
 	public void go(int steps) {
 		for(int i = 0; i != steps; i++) { 
-//			if (canPickThing()==true){
-//				pickThing();	
-//			}else{
-//				breakRobot("Evil is the best!");
-//				continue;
-//			}
 			setSpeed(speed);
 			System.out.println(speed);
 			randomMove();
 		}
 	}
 
+	public void pickThing() {
+		if (canPickThing())
+			super.pickThing();
+		if (this.countThingsInBackpack() == 1){
+			JFrame frame = null;
+			JOptionPane.showMessageDialog(frame, "You win! Congratulations");
+		}
+	}
+	
 	public void randomMove() {
 		int nrTurns = randomInt(4)+1;
 		if (nrTurns > 0){
@@ -43,6 +46,12 @@ public class EnemyRobot extends PlayerRobot{
 			}
 		}
 		setSpeed(speed);
+		if (this.countThingsInBackpack() == 1){
+			JFrame frame = null;
+			JOptionPane.showMessageDialog(frame, "Evil prevails");
+			
+		}
+		pickThing();
 		move();
 	}
 
