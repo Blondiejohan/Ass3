@@ -54,6 +54,10 @@ public class PlayerRobot extends Robot implements Runnable{
 			move();
 		}
 	}
+	
+	public void freeze(){
+		//TODO
+	}
 
 	public void moveTo(String s){
 		switch(s){

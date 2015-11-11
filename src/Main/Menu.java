@@ -17,14 +17,11 @@ public class Menu extends Layout{
 
 	public void pause(){
 		if(paused == false){
-			try {
-				frame.wait();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				evilRob.freeze();
+				rob.freeze();
 		} else {
-			frame.notify();
+			evilRob.go(1000);
+			rob.go(0);
 		}
 	}
 
@@ -32,11 +29,10 @@ public class Menu extends Layout{
 
 		frame.repaint();
 		frame.remove(panel);
-		
+
 		addPanel();
-		 addButtons();
-	     addCity();
-	     addMenu();
+		addButtons();
+
 	}
 
 	public JMenu makeActionsMenu() {
