@@ -34,6 +34,10 @@ public class PlayerRobot extends Robot implements Runnable{
 		if (frontIsClear()){
 			super.move();
 			System.out.println("Gogogo!");
+		} else {
+			while(!frontIsClear()){
+				turnLeft();
+			}
 		}
 	}
 	public void turnAround() {
@@ -63,6 +67,7 @@ public class PlayerRobot extends Robot implements Runnable{
 				while(this.getDirection() != Direction.NORTH){
 					turnLeft();
 				}
+				move();
 				break;
 			}
 		case("down"):
@@ -73,6 +78,7 @@ public class PlayerRobot extends Robot implements Runnable{
 				while(this.getDirection() != Direction.SOUTH){
 					turnLeft();
 				}
+				move();
 				break;
 			}
 		case("left"):
@@ -83,6 +89,7 @@ public class PlayerRobot extends Robot implements Runnable{
 				while(this.getDirection() != Direction.WEST){
 					turnLeft();
 				}
+				move();
 				break;
 			}
 		case("right"):
@@ -93,6 +100,7 @@ public class PlayerRobot extends Robot implements Runnable{
 				while(this.getDirection() != Direction.EAST){
 					turnLeft();
 				}
+				move();
 				break;
 			}
 		}
@@ -101,7 +109,7 @@ public class PlayerRobot extends Robot implements Runnable{
 	
 	@Override
 	public void run() {
-		go(10);
+		go(1000);
 		System.out.println("In run(), after go()");
 	}
 
