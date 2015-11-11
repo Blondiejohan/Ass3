@@ -4,7 +4,7 @@ import becker.robots.City;
 import becker.robots.Direction;
 import becker.robots.Robot;
 
-public class PlayerRobot extends Robot {
+public class PlayerRobot extends Robot implements Runnable{
 	Double speed = 1.0;
 	
 	public PlayerRobot(City arg0, int arg1, int arg2, Direction arg3, Double speed) {
@@ -46,6 +46,12 @@ public class PlayerRobot extends Robot {
 		for (int i = 0; i < nrSteps; i++) {
 			move();
 		}
+	}
+
+	@Override
+	public void run() {
+		move(2);
+		
 	}
 
 }

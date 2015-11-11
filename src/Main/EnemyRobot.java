@@ -6,9 +6,9 @@ import java.awt.Color;
 import becker.robots.Direction;
 import becker.robots.Robot;
 
-public class EnemyRobot extends Robot {
+public class EnemyRobot extends Robot implements Runnable{
 	private static java.util.Random random = new java.util.Random();
-	Double speed=1.0;
+	Double speed=0.3;
 
 	public EnemyRobot(City arg0, int arg1, int arg2, Direction arg3) {
 		super(arg0, arg1, arg2, arg3);
@@ -41,5 +41,10 @@ public class EnemyRobot extends Robot {
 
 	public static int randomInt(int n) {
 		return random.nextInt(n);
+	}
+
+	@Override
+	public void run() {
+		go(1000);
 	}
 }

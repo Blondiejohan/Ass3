@@ -5,7 +5,7 @@ import becker.robots.*;
 public class FramedCity {
 
 	MainFrame frame;
-	protected int size=20;
+	protected int size=10;
 
 //	RobotUIComponents uiStuff;
 

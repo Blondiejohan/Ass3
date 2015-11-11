@@ -27,9 +27,12 @@ public class Menu extends Layout{
 	}
 
 	public void restart(){
-		frame.remove(panel);
+		frame.repaint();
 
-		addMenu();
+		 addPanel();
+		 addButtons();
+	     addCity();
+	     addMenu();
 	}
 
 	public JMenu makeActionsMenu() {

@@ -33,6 +33,13 @@ public class Layout extends FramedCity {
 		this.view = view;
 		rob = new PlayerRobot(presentCity, 7, 7, Direction.NORTH, 1.0);
 		evilRob = new EnemyRobot(presentCity, 3, 3, Direction.SOUTH);
+		
+		Thread robThread = new Thread(rob);
+		Thread evilThread = new Thread(evilRob);
+		
+		robThread.start();
+		evilThread.start();
+		
 		presentCity.placePresent();
 		presentCity.walls();
 		panel.add(this.view);
@@ -46,13 +53,37 @@ public class Layout extends FramedCity {
 		frame.pack();
 	}          
 
+	public JPanel addButtons(){
+		JPanel buttonPanel = new JPanel(new GridLayout(3,3));
+
+		JButton up = new JButton("UP");
+		JButton down = new JButton("DOWN");
+		JButton left = new JButton("LEFT");
+		JButton right = new JButton("RIGHT");
+		JButton pick = new JButton("PICK");
+
+		up.addActionListener(e -> rob.move());
+		down.addActionListener(e -> rob.move());
+		left.addActionListener(e -> rob.move());
+		right.addActionListener(e -> rob.move());
+		pick.addActionListener(e -> rob.pickThing());
+
+		buttonPanel.add(up);
+		buttonPanel.add(down);
+		buttonPanel.add(left);
+		buttonPanel.add(right);
+		buttonPanel.add(pick);
+
+		return buttonPanel;
+	}
+	
 	public void addPanel() {
 
 		panel = new JPanel(new BorderLayout());
 		addCity();
 		addStartStop();
 		panel.add(view, BorderLayout.CENTER);
-		panel.add(startStop, BorderLayout.SOUTH);
+		panel.add(addButtons(), BorderLayout.SOUTH);
 		frame.setContentPane(panel);
 		frame.pack();
 
