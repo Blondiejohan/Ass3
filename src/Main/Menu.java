@@ -6,6 +6,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 
+import becker.robots.Direction;
+
 public class Menu extends Layout{
 	private boolean paused = false;
 
@@ -27,9 +29,11 @@ public class Menu extends Layout{
 	}
 
 	public void restart(){
-		frame.repaint();
 
-		 addPanel();
+		frame.repaint();
+		frame.remove(panel);
+		
+		addPanel();
 		 addButtons();
 	     addCity();
 	     addMenu();
@@ -56,9 +60,9 @@ public class Menu extends Layout{
 
 		easy.setSelected(true);
 
-		easy.addActionListener(e -> changeRobotSpeed(0.33));
-		medium.addActionListener(e -> changeRobotSpeed(0.66));
-		hard.addActionListener(e -> changeRobotSpeed(1.0));
+		easy.addActionListener(e -> changeRobotSpeed(1.0));
+		medium.addActionListener(e -> changeRobotSpeed(2.0));
+		hard.addActionListener(e -> changeRobotSpeed(3.0));
 
 		ButtonGroup settingsGroup = new ButtonGroup();
 		settingsGroup.add(easy);
@@ -74,7 +78,12 @@ public class Menu extends Layout{
 	}
 
 	private void changeRobotSpeed(double d) {
-		evilRob.setSpeed(d);
+		restart();
+		evilThread.interrupt();
+		evilRob = new EnemyRobot(presentCity, size, size, Direction.SOUTH, d);
+		evilThread = new Thread(evilRob);
+		evilThread.start();
+		//evilThread.start();
 	}
 
 	public void addMenu() {

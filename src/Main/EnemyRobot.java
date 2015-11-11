@@ -13,6 +13,7 @@ public class EnemyRobot extends PlayerRobot{
 	public EnemyRobot(City arg0, int arg1, int arg2, Direction arg3, double s) {
 		super(arg0, arg1, arg2, arg3,s);
 		this.speed = s;
+		setSpeed(s);
 		
 		Color black = new Color(1);
 		this.setColor(black);
@@ -27,15 +28,16 @@ public class EnemyRobot extends PlayerRobot{
 //				breakRobot("Evil is the best!");
 //				continue;
 //			}
+			setSpeed(speed);
+			System.out.println(speed);
 			randomMove();
-			System.out.println("Bad guy moved");
 		}
 	}
 
 	public void randomMove() {
 		int nrTurns = randomInt(4)+1;
 		if (nrTurns > 0){
-			setSpeed(speed);
+			setSpeed(speed * nrTurns);
 			for (int i = 0; i < nrTurns; i++){
 				turnLeft();
 			}

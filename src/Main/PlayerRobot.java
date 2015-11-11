@@ -5,7 +5,7 @@ import becker.robots.Direction;
 import becker.robots.Robot;
 
 public class PlayerRobot extends Robot implements Runnable{
-	Double speed = 1.0;
+	Double speed;
 	
 	public PlayerRobot(City arg0, int arg1, int arg2, Direction arg3, Double speed) {
 		super(arg0, arg1, arg2, arg3);
@@ -34,7 +34,6 @@ public class PlayerRobot extends Robot implements Runnable{
 	public void move() {
 		if (frontIsClear()){
 			super.move();
-			System.out.println("Gogogo!");
 		} else {
 			while(!frontIsClear()){
 				turnLeft();
@@ -53,9 +52,7 @@ public class PlayerRobot extends Robot implements Runnable{
 	public void go(int nrSteps) {
 		for (int i = 0; i < nrSteps; i++) {
 			move();
-			System.out.println("Go nr " + i);
 		}
-		System.out.println("End of go()");
 	}
 
 	public void moveTo(String s){
@@ -110,8 +107,7 @@ public class PlayerRobot extends Robot implements Runnable{
 	
 	@Override
 	public void run() {
-		go(1000);
-		System.out.println("In run(), after go()");
+		go(0);
 	}
 
 }
