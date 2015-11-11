@@ -31,8 +31,10 @@ public class PlayerRobot extends Robot implements Runnable{
 			super.pickThing();
 	}
 	public void move() {
-		if (frontIsClear())
+		if (frontIsClear()){
 			super.move();
+			System.out.println("Gogogo!");
+		}
 	}
 	public void turnAround() {
 		double speed = getSpeed();
@@ -41,17 +43,66 @@ public class PlayerRobot extends Robot implements Runnable{
 		turnLeft();
 		setSpeed(speed);
 	}
+	
 
 	public void go(int nrSteps) {
 		for (int i = 0; i < nrSteps; i++) {
 			move();
+			System.out.println("Go nr " + i);
 		}
+		System.out.println("End of go()");
 	}
 
+	public void moveTo(String s){
+		switch(s){
+		case("up"):
+			if(this.getDirection() == Direction.NORTH){
+				move();
+				break;
+			} else {
+				while(this.getDirection() != Direction.NORTH){
+					turnLeft();
+				}
+				break;
+			}
+		case("down"):
+			if(this.getDirection() == Direction.SOUTH){
+				move();
+				break;
+			} else {
+				while(this.getDirection() != Direction.SOUTH){
+					turnLeft();
+				}
+				break;
+			}
+		case("left"):
+			if(this.getDirection() == Direction.WEST){
+				move();
+				break;
+			} else {
+				while(this.getDirection() != Direction.WEST){
+					turnLeft();
+				}
+				break;
+			}
+		case("right"):
+			if(this.getDirection() == Direction.EAST){
+				move();
+				break;
+			} else {
+				while(this.getDirection() != Direction.EAST){
+					turnLeft();
+				}
+				break;
+			}
+		}
+		
+	}
+	
 	@Override
 	public void run() {
-		go(1000);
-		
+		go(10);
+		System.out.println("In run(), after go()");
 	}
 
 }

@@ -66,10 +66,10 @@ public class Layout extends FramedCity {
 		JButton right = new JButton("RIGHT");
 		JButton pick = new JButton("PICK");
 		
-		up.addActionListener(e -> rob.move());
-		down.addActionListener(e -> rob.move());
-		left.addActionListener(e -> rob.move());
-		right.addActionListener(e -> rob.move());
+		up.addActionListener(e -> rob.moveTo("up"));
+		down.addActionListener(e -> rob.moveTo("down"));
+		left.addActionListener(e -> rob.moveTo("left"));
+		right.addActionListener(e -> rob.moveTo("right"));
 		pick.addActionListener(e -> rob.pickThing());
 
 		GroupLayout layout = new GroupLayout(bPanel);
@@ -117,6 +117,8 @@ public class Layout extends FramedCity {
 		panel.add(addButtons(), BorderLayout.PAGE_END);
 		frame.setContentPane(panel);
 		frame.pack();
+		
+		startStop.doClick();
 
 	}
 }
