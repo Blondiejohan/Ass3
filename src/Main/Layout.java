@@ -25,12 +25,16 @@ public class Layout extends FramedCity {
 	public void addCity() {
 
 		City.showFrame(false);
-		PresentCity presentCity = new PresentCity();
+		PresentCity presentCity = new PresentCity(size);
 		this.presentCity = presentCity;
+		
 		RobotUIComponents uiStuff = new RobotUIComponents(presentCity, 0, 0, size, size);
 		this.uiStuff = uiStuff;
+		
 		CityView view = uiStuff.getCityView();
+		view = uiStuff.getCityView();
 		this.view = view;
+		
 		rob = new PlayerRobot(presentCity, 7, 7, Direction.NORTH, 1.0);
 		evilRob = new EnemyRobot(presentCity, 3, 3, Direction.SOUTH);
 

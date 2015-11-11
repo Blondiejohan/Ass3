@@ -12,9 +12,9 @@ public class PresentCity extends City {
 	public int size;
 
 
-	public PresentCity(){
+	public PresentCity(int size){
 		super();
-		this.size = 20;
+		this.size = size;
 
 	}
 

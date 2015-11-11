@@ -42,7 +42,7 @@ public class PlayerRobot extends Robot implements Runnable{
 		setSpeed(speed);
 	}
 
-	public void move(int nrSteps) {
+	public void go(int nrSteps) {
 		for (int i = 0; i < nrSteps; i++) {
 			move();
 		}
@@ -50,7 +50,7 @@ public class PlayerRobot extends Robot implements Runnable{
 
 	@Override
 	public void run() {
-		move(2);
+		go(1000);
 		
 	}
 
