@@ -39,7 +39,6 @@ public class PlayerRobot extends Robot implements Runnable {
 			m.startStop.doClick();
 			int choice = JOptionPane.showConfirmDialog(null, "You win! Congratulations", "Restart game?", JOptionPane.YES_NO_OPTION);
 			if (choice == JOptionPane.YES_OPTION){
-				m = new Main();
 				m.restart();
 			} else{
                 System.exit(0);
