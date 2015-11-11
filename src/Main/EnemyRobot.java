@@ -22,8 +22,6 @@ public class EnemyRobot extends PlayerRobot{
 
 	public void go(int steps) {
 		for(int i = 0; i != steps; i++) { 
-			setSpeed(speed);
-			System.out.println(speed);
 			randomMove();
 		}
 	}
@@ -31,10 +29,10 @@ public class EnemyRobot extends PlayerRobot{
 	public void pickThing() {
 		if (canPickThing())
 			super.pickThing();
-		if (this.countThingsInBackpack() == 1){
-			JFrame frame = null;
-			JOptionPane.showMessageDialog(frame, "You win! Congratulations");
-		}
+//		if (this.countThingsInBackpack() == 1){
+//			JFrame frame = null;
+//			JOptionPane.showMessageDialog(frame, "You win! Congratulations");
+//		}
 	}
 	
 	public void randomMove() {

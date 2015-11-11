@@ -16,27 +16,17 @@ public class Menu extends Layout{
 	}
 
 	public void pause(){
-		if(paused == false){
-			try {
-				frame.wait();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			frame.notify();
-		}
+		startStop.doClick();
 	}
 
 	public void restart(){
 
-		frame.repaint();
 		frame.remove(panel);
-		
+		frame.repaint();
+
 		addPanel();
-		 addButtons();
-	     addCity();
-	     addMenu();
+
+		addMenu();
 	}
 
 	public JMenu makeActionsMenu() {

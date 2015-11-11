@@ -58,7 +58,7 @@ public class Layout extends FramedCity {
 	}          
 
 	public JPanel addButtons(){
-		JPanel bPanel = new JPanel();
+		JPanel bPanel = new JPanel(new BorderLayout());
 
 		JButton up = new JButton("UP");
 		JButton down = new JButton("DOWN");
