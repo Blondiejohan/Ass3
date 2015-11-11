@@ -33,14 +33,14 @@ public class EnemyRobot extends PlayerRobot{
 	}
 
 	public void randomMove() {
-//		int nrTurns = randomInt(4)+1;
-//		if (nrTurns > 0){
-//			setSpeed(speed * nrTurns);
-//			for (int i = 0; i < nrTurns; i++){
-//				turnLeft();
-//			}
-//		}
-//		setSpeed(speed);
+		int nrTurns = randomInt(4)+1;
+		if (nrTurns > 0){
+			setSpeed(speed);
+			for (int i = 0; i < nrTurns; i++){
+				turnLeft();
+			}
+		}
+		setSpeed(speed);
 		move();
 	}
 
