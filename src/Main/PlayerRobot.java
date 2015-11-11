@@ -1,53 +1,33 @@
 package Main;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import becker.robots.City;
 import becker.robots.Direction;
 import becker.robots.Robot;
 
 public class PlayerRobot extends Robot implements Runnable{
 	Double speed;
-	
+
 	public PlayerRobot(City arg0, int arg1, int arg2, Direction arg3, Double speed) {
 		super(arg0, arg1, arg2, arg3);
 		this.speed = speed;
 		setSpeed(speed);
 	}
 
-	public void turnRight() {
-		double speed = getSpeed();
-		setSpeed(3 * speed);
-		turnLeft();
-		turnLeft();
-		turnLeft();
-		setSpeed(speed);
-	}
-
-	public void putThing() {
-		if (countThingsInBackpack() > 0)
-			super.putThing();
-	}
 
 	public void pickThing() {
 		if (canPickThing())
 			super.pickThing();
-	}
-	public void move() {
-		if (frontIsClear()){
-			super.move();
-		} else {
-			while(!frontIsClear()){
-				turnLeft();
-			}
+		if (this.countThingsInBackpack() == 1){
+			JFrame frame = null;
+			JOptionPane.showMessageDialog(frame, "You win! Congratulations");
 		}
 	}
-	public void turnAround() {
-		double speed = getSpeed();
-		setSpeed(2 * speed);
-		turnLeft();
-		turnLeft();
-		setSpeed(speed);
-	}
-	
+
+
+
 
 	public void go(int nrSteps) {
 		for (int i = 0; i < nrSteps; i++) {
@@ -63,52 +43,66 @@ public class PlayerRobot extends Robot implements Runnable{
 		switch(s){
 		case("up"):
 			if(this.getDirection() == Direction.NORTH){
+				setSpeed(speed);
 				move();
+
 				break;
 			} else {
 				while(this.getDirection() != Direction.NORTH){
+					setSpeed(4);
 					turnLeft();
 				}
+				setSpeed(speed);
 				move();
 				break;
 			}
 		case("down"):
 			if(this.getDirection() == Direction.SOUTH){
+				setSpeed(speed);
 				move();
 				break;
 			} else {
 				while(this.getDirection() != Direction.SOUTH){
+					setSpeed(4);
 					turnLeft();
 				}
+				setSpeed(speed);
 				move();
 				break;
 			}
 		case("left"):
 			if(this.getDirection() == Direction.WEST){
+				setSpeed(speed);
 				move();
 				break;
 			} else {
 				while(this.getDirection() != Direction.WEST){
+					setSpeed(4);
 					turnLeft();
 				}
+				setSpeed(speed);
 				move();
 				break;
 			}
 		case("right"):
 			if(this.getDirection() == Direction.EAST){
+				setSpeed(speed);
 				move();
 				break;
 			} else {
 				while(this.getDirection() != Direction.EAST){
+					setSpeed(4);
 					turnLeft();
 				}
+
+				setSpeed(speed);
 				move();
 				break;
 			}
 		}
-		
+
 	}
-	
+
 	@Override
 	public void run() {
 		go(0);

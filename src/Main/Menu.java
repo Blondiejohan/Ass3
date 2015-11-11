@@ -17,11 +17,14 @@ public class Menu extends Layout{
 
 	public void pause(){
 		if(paused == false){
-				evilRob.freeze();
-				rob.freeze();
+			try {
+				frame.wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else {
-			evilRob.go(1000);
-			rob.go(0);
+			frame.notify();
 		}
 	}
 
@@ -29,10 +32,11 @@ public class Menu extends Layout{
 
 		frame.repaint();
 		frame.remove(panel);
-
+		
 		addPanel();
-		addButtons();
-
+		 addButtons();
+	     addCity();
+	     addMenu();
 	}
 
 	public JMenu makeActionsMenu() {
@@ -79,7 +83,6 @@ public class Menu extends Layout{
 		evilRob = new EnemyRobot(presentCity, size, size, Direction.SOUTH, d);
 		evilThread = new Thread(evilRob);
 		evilThread.start();
-		//evilThread.start();
 	}
 
 	public void addMenu() {
