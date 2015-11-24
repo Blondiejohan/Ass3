@@ -4,37 +4,49 @@ import becker.robots.City;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import becker.robots.Direction;
-import becker.robots.IPredicate;
-import becker.robots.Sim;
+import becker.robots.RobotException;
 
-public class EnemyRobot extends PlayerRobot implements IPredicate{
+
+public class EnemyRobot extends PlayerRobot {
 	private static java.util.Random random = new java.util.Random();
+	double speed;
+	int identity;
 
-	public EnemyRobot(City arg0, int arg1, int arg2, Direction arg3, double s, Main m) {
-		super(arg0, arg1, arg2, arg3,s,m);
-		setSpeed(s);
-		
+	public EnemyRobot(City aCity,int aStreet,int anAvenue,Direction aDirection,int numThings,double speed, Main m) {
+		super(aCity, aStreet, anAvenue, aDirection,numThings,speed,m);
+		this.speed = speed;
 		Color black = new Color(1);
 		this.setColor(black);
 
 	}
 
 	public void go(int steps) {
+		setSpeed(speed);
 		for(int i = 0; i != steps; i++) { 
 			randomMove();
 		}
 	}
-
-	public void pickThing() {
-		if (canPickThing() == true)
-			super.pickThing();
-//		if (this.countThingsInBackpack() == 1){
-//			JFrame frame = null;
-//			JOptionPane.showMessageDialog(frame, "You win! Congratulations");
-//		}
-	}
 	
+	public void breakRobot(String message) {
+        try{
+		super.getBreakRobot(message);
+        } catch (RobotException e){
+        	int choice = JOptionPane.showConfirmDialog(null, "You win! Congratulations", "Restart game?", JOptionPane.YES_NO_OPTION);
+			if (choice == JOptionPane.YES_OPTION){
+				m.restart(speed);
+			} else{
+				System.exit(0);
+			}
+        }
+    }
+
 	public void randomMove() {
+		PlayerRobot r;
+		if(this.examineRobots().hasNext()){
+		r = (PlayerRobot) this.examineRobots().next();
+		} else {
+			r = null;
+		}
 		int nrTurns = randomInt(4)+1;
 		if (nrTurns > 0){
 			setSpeed(speed * nrTurns);
@@ -43,20 +55,12 @@ public class EnemyRobot extends PlayerRobot implements IPredicate{
 			}
 		}
 		setSpeed(speed);
-		if (this.countThingsInBackpack() == 1 || countThingsInBackpack(IPredicate.aRobot) > 0 ){
-			int choice = JOptionPane.showConfirmDialog(null, "Evil prevails /n Restart game?", "Game over", JOptionPane.YES_NO_OPTION);
-			if (choice == JOptionPane.YES_OPTION)
-				m.restart();
-            else
-                System.exit(0);
-			
+		
+		if (r != null && r.identity == 0){
+			r.breakRobot("Death");
 		}
-		pickThing();
 		move();
 	}
-	
-
-	
 
 	public static int randomInt(int n) {
 		return random.nextInt(n);
@@ -64,12 +68,8 @@ public class EnemyRobot extends PlayerRobot implements IPredicate{
 
 	@Override
 	public void run() {
+		System.out.println(speed);
 		go(1000);
 		System.out.println("Evil has the runs");
-	}
-
-	@Override
-	public boolean isOK(Sim s) {
-		return s instanceof PlayerRobot;
 	}
 }

@@ -4,18 +4,37 @@ import javax.swing.JOptionPane;
 import becker.robots.City;
 import becker.robots.Direction;
 import becker.robots.Robot;
+import becker.robots.RobotException;
 
-public class PlayerRobot extends Robot implements Runnable {
+public class PlayerRobot extends Robot implements Runnable{
 	double speed;
+	int identity;
 	Main m;
 
-	public PlayerRobot(City arg0, int arg1, int arg2, Direction arg3, double speed, Main m) {
-		super(arg0, arg1, arg2, arg3);
+	public PlayerRobot(City aCity,int aStreet,int anAvenue,Direction aDirection,int numThings,double speed, Main m) {
+		super(aCity, aStreet, anAvenue, aDirection, numThings);
 		this.speed = speed;
 		this.m = m;
+		
 		setSpeed(speed);
 	}
 
+	public void getBreakRobot(String message){
+		  super.breakRobot(message);
+		 }
+	
+	public void breakRobot(String message) {
+        try{
+		super.breakRobot(message);
+        } catch (RobotException e){
+        	int choice = JOptionPane.showConfirmDialog(null, "Evil prevails" + '\n' + "Restart game?", "Game over", JOptionPane.YES_NO_OPTION);
+			if (choice == JOptionPane.YES_OPTION)
+				m.restart(m.evilRob.speed);
+			else
+				System.exit(0);
+        }
+    }
+	
 	public void move(){
 		if(!frontIsClear()){
 			turnLeft();
@@ -29,13 +48,8 @@ public class PlayerRobot extends Robot implements Runnable {
 		if (canPickThing())
 			super.pickThing();
 		if (this.countThingsInBackpack() == 1){
-			m.startStop.doClick();
-			int choice = JOptionPane.showConfirmDialog(null, "You win! Congratulations", "Restart game?", JOptionPane.YES_NO_OPTION);
-			if (choice == JOptionPane.YES_OPTION){
-				m.restart();
-			} else{
-				System.exit(0);
-			}
+			m.evilRob.breakRobot("Death");
+			
 		}
 	}
 
@@ -113,7 +127,4 @@ public class PlayerRobot extends Robot implements Runnable {
 	public void run() {
 		go(0);
 	}
-
-
-
 }

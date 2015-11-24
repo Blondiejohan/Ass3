@@ -16,13 +16,4 @@ public class MainFrame extends JFrame{
 		setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
-	
-//	public static void main(String[] args) {
-//		MainFrame main = new MainFrame("Presentopolis");
-//		main.setSize(1028,768);
-//		
-//
-//	}
-
 }

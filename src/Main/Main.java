@@ -5,17 +5,13 @@ import becker.robots.CityView;
 import becker.robots.Direction;
 import becker.robots.RobotUIComponents;
 
-
+//Main class
 public class Main extends Menu {
 
 	public Main(){
 		super();
 	}
 
-	public void restart() {
-        super.restart();
-    }
-	
 	public void addCity() {
 
 		City.showFrame(false);
@@ -25,11 +21,13 @@ public class Main extends Menu {
 		RobotUIComponents uiStuff = new RobotUIComponents(presentCity, 0, 0, size, size);
 		this.uiStuff = uiStuff;
 
-		rob = new PlayerRobot(presentCity, 7, 7, Direction.NORTH, 3.0, this);
-		evilRob = new EnemyRobot(presentCity, 3, 3, Direction.SOUTH,1.0, this);
+		rob = new PlayerRobot(presentCity, 7, 7, Direction.NORTH,0, 3.0, this);
+		evilRob = new EnemyRobot(presentCity, 3, 3, Direction.SOUTH,0,1.0, this);
+		rob.identity = 0;
+		evilRob.identity = 1;
 		robThread = new Thread(rob);
 		evilThread = new Thread(evilRob);
-		
+
 
 		robThread.start();
 		evilThread.start();

@@ -52,7 +52,7 @@ public class Layout extends FramedCity{
 	}          
 
 	public JPanel addButtons(){
-		JPanel bPanel = new JPanel(new BorderLayout());
+		JPanel bPanel = new JPanel();
 
 		JButton up = new JButton("UP");
 		JButton down = new JButton("DOWN");
@@ -102,7 +102,7 @@ public class Layout extends FramedCity{
 		addCity();
 		addStartStop();
 		panel.add(view, BorderLayout.CENTER);
-		panel.add(addButtons(), BorderLayout.PAGE_END);
+		panel.add(addButtons(), BorderLayout.SOUTH);
 		frame.setContentPane(panel);
 		frame.pack();
 

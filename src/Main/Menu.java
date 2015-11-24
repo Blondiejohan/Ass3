@@ -7,21 +7,14 @@ import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 
 public class Menu extends Layout{
+	JRadioButtonMenuItem easy, medium, hard;
+	
 	public Menu() {
 		super();
 	}
 
 	public void pause(){
 		startStop.doClick();
-	}
-
-	public void restart(){
-		startStop.doClick();
-		frame.remove(panel);
-		frame.repaint();
-
-		addPanel();
-		addMenu();
 	}
 	
 	public void restart(double speed){
@@ -30,13 +23,20 @@ public class Menu extends Layout{
 		frame.repaint();
 
 		addPanel();
-	//	addButtons();
-	//	addCity();
 		addMenu();
 		
-		evilRob.setSpeed(speed);
+		evilRob.speed = speed;
 		
-	//	startStop.doClick();
+		if(speed == 1.0){
+			easy.setSelected(true);
+			evilRob.setSpeed(evilRob.speed);
+		} else if (speed == 2.0) {
+			medium.setSelected(true);
+			evilRob.setSpeed(evilRob.speed);
+		} else {
+			hard.setSelected(true);
+			evilRob.setSpeed(evilRob.speed);
+		}
 	}
 
 	public JMenu makeActionsMenu() {
@@ -44,7 +44,7 @@ public class Menu extends Layout{
 		JMenuItem restart = new JMenuItem("Restart");
 
 		pause.addActionListener(e -> pause());
-		restart.addActionListener(e -> restart());
+		restart.addActionListener(e -> restart(evilRob.speed));
 
 		JMenu action = new JMenu("Actions");
 		action.add(pause);
@@ -54,9 +54,9 @@ public class Menu extends Layout{
 	}
 
 	public JMenu makeSettingsMenu() {
-		JRadioButtonMenuItem easy = new JRadioButtonMenuItem("Easy");
-		JRadioButtonMenuItem medium = new JRadioButtonMenuItem("Medium");
-		JRadioButtonMenuItem hard = new JRadioButtonMenuItem("Hard");
+		easy = new JRadioButtonMenuItem("Easy");
+		medium = new JRadioButtonMenuItem("Medium");
+		hard = new JRadioButtonMenuItem("Hard");
 
 		easy.setSelected(true);
 
@@ -77,8 +77,7 @@ public class Menu extends Layout{
 		return settings;
 	}
 
-	private void changeRobotSpeed(double d) {
-		
+	public void changeRobotSpeed(double d) {
 		restart(d);
 
 	}
